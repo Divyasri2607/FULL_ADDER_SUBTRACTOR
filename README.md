@@ -37,6 +37,15 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+FULL ADDER
+
+![Screenshot 2024-12-03 082725](https://github.com/user-attachments/assets/2e1c0097-4033-419b-b4b8-c6e592c201c4)
+
+FULL SUBTRACTOR
+
+![Screenshot 2024-12-03 082801](https://github.com/user-attachments/assets/31f7d926-59ff-4f88-b0f0-18346278d037)
+
+
 
 **Procedure**
 
@@ -44,12 +53,65 @@ Write the detailed procedure here
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+```
+FULL ADDER
+module experiment4(sum,cout,a,b,cin);
+output sum;
+output cout;
+input a;
+input b;
+input cin;
+//internal nets
+wire s1,c1,c2;
+//Instantiate logic gate primitives
+xor (s1,a,b);
+and(c1,a,b);
+xor(sum,s1,cin);
+and(c2,s1,cin);
+or(cout,c2,c1);
+endmodule
+```
+```
+FULL SUSTRACTOR
+module experiment4a (df, bo, a, b, bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2, w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(-w1&bin);
+assign df-w1^bin;
+assign bo-w2/w3;
+endmodule
+```
+
+Developed by:Divya Sri 
+RegisterNumber:24901155
 */
 
 **RTL Schematic**
+FULL ADDER
+
+![exp4](https://github.com/user-attachments/assets/9b078ba0-cc8a-4f2a-bdc4-0d5386b321c7)
+
+FULL SUBTRACTOR
+
+![exp4a](https://github.com/user-attachments/assets/15a7a8bb-1b71-4f1b-9ab5-29671739dc8b)
+
 
 **Output Timing Waveform**
+FULL ADDER
+
+![exp4 (2)](https://github.com/user-attachments/assets/aac7da72-5d65-481d-9060-4120efd4dd72)
+
+FULL SUBTRACTOR
+
+![exp4a (2)](https://github.com/user-attachments/assets/69ed8424-495f-4f8d-9b7b-769e630221f1)
+
 
 **Result:**
 
